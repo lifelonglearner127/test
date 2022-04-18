@@ -9,8 +9,10 @@ jobs:
     # Set job outputs to values from filter step
     outputs:
       job_recommender: ${{ steps.filter.outputs.job_recommender }}
-      position_recommender: ${{ steps.filter.outputs.position_recommender }}
+      position_recommender: ${{ steps.filter.outputs.frontend }}
     steps:
+    - name: Checkout source code
+      uses: actions/checkout@v2
     - uses: dorny/paths-filter@v2
       id: filter
       with:
@@ -26,7 +28,7 @@ jobs:
     if: ${{ needs.changes.outputs.job_recommender == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
   # JOB to build and test frontend code
   position_recommender:
@@ -34,5 +36,5 @@ jobs:
     if: ${{ needs.changes.outputs.position_recommender == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
     
