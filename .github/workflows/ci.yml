@@ -26,7 +26,7 @@ jobs:
     if: ${{ needs.changes.outputs.job_recommender == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
 
   # JOB to build and test frontend code
   position_recommender:
@@ -34,5 +34,5 @@ jobs:
     if: ${{ needs.changes.outputs.position_recommender == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
     
